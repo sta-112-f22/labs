@@ -182,8 +182,9 @@ How do the plots compare to each other across all datasets? How do the correlati
 
 | Total                              | 100 pts |
 |------------------------------------|---------|
-| Changed `author` in YAML           | 5  pts  |
+| Changed `author` in YAML           | 10  pts |
+| Changed `date` in YAML             | 10  pts |
 | Exercises 1-4                      | 60 pts  |
-| Exercise 5                         | 25 pts  |
+| Exercise 5                         | 20 pts  |
 
 <br><br><br> <img src="img/dsbox-logo.png" width="30"/> </img> Lab adapted from <a href="https://datasciencebox.org" target="_blank">datasciencebox.org</a> by Dr. Lucy D'Agostino McGowan
