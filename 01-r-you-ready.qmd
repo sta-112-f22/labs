@@ -39,7 +39,10 @@ For this assignment, go to RStudio Pro and click:
 **Step 3**. Git\
 **Step 4**. Copy the following into the "Repository URL":
 
-`https://github.com/sta-112-f22/lab-01-r-you-ready.git`
+```{bash}
+#| eval: false
+https://github.com/sta-112-f22/lab-01-r-you-ready.git
+```
 
 # Packages
 
@@ -128,11 +131,12 @@ Second, the assignment operator: `<-`, assigns the name `dino_data` to the filte
 Next, we need to visualize these data. We will use the `ggplot` function for this. Its first argument is the data you're visualizing. Next we define the `aes`thetic mappings. In other words, the columns of the data that get mapped to certain aesthetic features of the plot, e.g. the `x` axis will represent the variable called `x` and the `y` axis will represent the variable called `y`. Then, we add another layer to this plot where we define which `geom`etric shapes we want to use to represent each observation in the data. In this case we want these to be points, hence `geom_point`.
 
 ```{r}
+#| label: dino-plot
 ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-If this seems like a lot, it is. And you will learn about the philosophy of building data visualizations in layer in detail next week. For now, follow along with the code that is provided.
+If this seems like a lot, it is. And you will learn about the philosophy of building data visualizations in layers in detail soon. For now, follow along with the code that is provided.
 
 For the second part of this exercises, we need to calculate a summary statistic: the correlation coefficient. Correlation coefficient, often referred to as $r$ in statistics, measures the linear association between two variables. You will see that some of the pairs of variables we plot do not have a linear relationship between them. This is exactly why we want to visualize first: visualize to assess the form of the relationship, and calculate $r$ only if relevant. In this case, calculating a correlation coefficient really doesn't make sense since the relationship between `x` and `y` is definitely not linear -- it's dinosaurial!
 
@@ -151,11 +155,8 @@ dino_data %>%
 
 4.  Plot `y` vs. `x` for the `circle` dataset. You can (and should) reuse code we introduced above, just replace the dataset name with the desired dataset. Then, calculate the correlation coefficient between `x` and `y` for this dataset. How does this value compare to the `r` of `dino`?
 
-::: column-margin
-Facet by the dataset variable, placing the plots in a 3 column grid, and don't add a legend.
-:::
-
 5.  Finally, let's look at all datasets at once. In order to plot this we will make use of facetting.
+
 
 ```{r}
 #| eval: false
@@ -165,26 +166,40 @@ ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
   theme(legend.position = "none")
 ```
 
+::: column-margin
+Facet by the dataset variable, placing the plots in a 3 column grid, and don't add a legend.
+:::
 And we can use the `group_by` function to generate all the summary correlation coefficients.
 
 ```{r}
 #| eval: false
 datasaurus_dozen %>%
   group_by(dataset) %>%
-  summarize(r = cor(x, y)) %>%
-  print(13)
+  summarize(r = cor(x, y))
 ```
 
 How do the plots compare to each other across all datasets? How do the correlation coefficients compare to each other across all datasets? What can we learn from this?
+
+6. Let's add a "line" to our plots show what the linear fit for these data would be. This line is drawn by fitting a simple linear regression model (in R this is called `lm` for "linear model") predicting `y` using `x` for each data set. Notice we added one line to the code we ran for Exercise 5 (`geom_smooth`) to add this visual layer. Add the code below to your report and examine the plot.
+
+```{r}
+#| eval: false
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "lm") +
+  facet_wrap(~ dataset, ncol = 3) +
+  theme(legend.position = "none")
+```
+
+Is the linear model a good way to represent these data? Do the lines on the plot accurately explain the relationship between `x` and `y`? Why or why not?
 
 
 ## Grading
 
 | Total                              | 100 pts |
 |------------------------------------|---------|
-| Changed `author` in YAML           | 10  pts |
-| Changed `date` in YAML             | 10  pts |
 | Exercises 1-4                      | 60 pts  |
 | Exercise 5                         | 20 pts  |
+| Exercise 6                         | 20 pts  |
 
 <br><br><br> <img src="img/dsbox-logo.png" width="30"/> </img> Lab adapted from <a href="https://datasciencebox.org" target="_blank">datasciencebox.org</a> by Dr. Lucy D'Agostino McGowan
