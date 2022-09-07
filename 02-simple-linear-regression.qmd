@@ -13,6 +13,11 @@ format:
 
 # Introduction
 
+::: column-margin
+![](https://r-graph-gallery.com/144-droid-bb-8-data-art_files/figure-html/thecode-1.png)
+This is a BB-8 droid [built using the ggplot2 R package](https://r-graph-gallery.com/144-droid-bb-8-data-art.html) by Victor Perrier.
+:::
+
 The main goal of this lab is to perform a **descriptive** analysis using simple linear regression. 
 
 # Getting started
