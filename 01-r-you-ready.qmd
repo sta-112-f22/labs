@@ -8,7 +8,7 @@ format:
       - lab.scss
 ---
 
-**Due:** 2022-08-31 at noon\
+**Due:** 2022-08-31 at noon
 **Turn your .html file in on Canvas**
 
 # Introduction
@@ -29,7 +29,7 @@ As the labs progress, you are encouraged to explore beyond what the labs dictate
 
 Each of your assignments will begin with the following steps.
 
--   Find the lab instructions under the course syllabus on our website [bit.ly/sta-112-s22](bit.ly/sta-112-s22)\
+-   Find the lab instructions under the course syllabus on our website [bit.ly/sta-112-f22](bit.ly/sta-112-f22)\
 -   Go to our RStudio Pro workspace and create a new project using my template.
 
 For this assignment, go to RStudio Pro and click:

@@ -1,0 +1,102 @@
+---
+title: "Lab 02 - Simple Linear Regression"
+date: "2022-09-08"
+format: 
+  html:
+    theme:
+      - flatly
+      - lab.scss
+---
+
+**Due:** 2022-09-14 at noon
+**Turn your .html file in on Canvas**
+
+# Introduction
+
+The main goal of this lab is to perform a **descriptive** analysis using simple linear regression. 
+
+# Getting started
+
+Go to RStudio Pro and click:
+
+**Step 1**. File \> New Project\
+**Step 2**. "Version Control"\
+**Step 3**. Git\
+**Step 4**. Copy the following into the "Repository URL":
+
+```{bash}
+#| eval: false
+https://github.com/sta-112-f22/lab-02-simple-linear-regression.git
+```
+
+
+# Warm up
+
+Before we introduce the data, let's warm up with some simple exercises.
+
+::: column-margin
+The top portion of your Quarto file (between the three dashed lines) is called YAML. It stands for "YAML Ain't Markup Language". It is a human friendly data serialization standard for all programming languages. All you need to know is that this area is called the YAML (we will refer to it as such) and that it contains meta information about your document.
+:::
+
+## YAML:
+
+Open the Quarto (`qmd`) file in your project, change the author name to your name, and render the document.
+
+Change the date in your YAML to today's date, and render the document.
+
+# Packages
+
+In this lab we will use the `tidyverse` package. We can load it using the following:
+
+```{r}
+#| label: load-packages
+#| message: false
+#| warning: false
+library(tidyverse)
+```
+
+# Data
+
+The data frame we will be working with today is called `starwars` and it's in the `tidyverse` package. 
+
+To find out more about the dataset, type the following in your Console: `?starwars`. A question mark before the name of an object will always bring up its help file. This command must be run in the Console.
+
+1.  Based on the help file, how many rows and how many columns does the `starwars` data set have? What are the variables included in the data frame? Add your responses to your lab report.
+
+2. We are interested in the relationship between the weight of a Star Wars character and their height. Create a visual summary using the `starwars` data of the relationship between these variables. What do you notice?
+
+3. Fit a linear model on the `starwars` data predicting a character's weight from their height. What is the intercept? Interpret this value. What is the slope? Interpret this value.
+
+4. Using the values in Exercise 3, write out the equation for the predicted weight $(\hat{y})$. 
+
+$$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1$$
+
+In  your `qmd` file, you can include math using `Latex` equations. These math equations are denoted using the `$`. To include an equation that will be centered on a line, you can wrap it in two `$$`. For example, you can add the equation above to your `qmd` file by coping the following text:
+
+```
+$$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1$$
+```
+
+Using the format above, replace `\hat{\beta}_0` and `\hat{\beta}_1` with the values you found in Exercise 3.
+
+5. Using the equation from Exercise 4, if you knew a character was 100 centimeters tall, what would you guess their weight was?
+
+6. Create a new data set called `starwars_nojabba` where you drop "Jabba Desilijic Tiure" from the data. You can edit the code below to do this.
+
+```{r}
+#| eval: false
+starwars_nojabba <- starwars %>%
+  filter(name == "----")
+```
+
+How many rows does this new data set have?
+
+7. Recreate the plot from Exercise 1 on `starwars_nojabba`. What do you notice? How do these plots compare?
+
+8. Refit the linear model from Exercise 2 on this reduced data set. How do the coefficients $(\hat\beta_0, \hat\beta_1)$ compare? Which is a better representation of the average character?
+
+9. Using the values in Exercise 8, write out the equation for the predicted weight $(\hat{y})$. 
+
+10. Using the equation from Exercise 9, if you knew a character was 100 centimeters tall, what would you guess their weight was? How does this compare to your guess from Exercise 5?
+
+11. Which data set was better suited for using a simple linear model to summarize the relationship between a character's weight and height? Why? 
