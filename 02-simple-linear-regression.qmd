@@ -76,11 +76,13 @@ To find out more about the dataset, type the following in your Console: `?starwa
 
 $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1$$
 
-In  your `qmd` file, you can include math using `Latex` equations. These math equations are denoted using the `$`. To include an equation that will be centered on a line, you can wrap it in two `$$`. For example, you can add the equation above to your `qmd` file by coping the following text:
+In  your `qmd` file, you can include math using `LaTeX` equations. These math equations are denoted using the `$`. To include an equation that will be centered on a line, you can wrap it in two `$$`. For example, you can add the equation above to your `qmd` file by coping the following text:
 
 ```
 $$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1$$
 ```
+
+You can also click `Insert > LaTeX Math > Display Math`.
 
 Using the format above, replace `\hat{\beta}_0` and `\hat{\beta}_1` with the values you found in Exercise 3.
 
@@ -96,9 +98,9 @@ starwars_nojabba <- starwars %>%
 
 How many rows does this new data set have?
 
-7. Recreate the plot from Exercise 1 on `starwars_nojabba`. What do you notice? How do these plots compare?
+7. Recreate the plot from Exercise 2 on `starwars_nojabba`. What do you notice? How do these plots compare?
 
-8. Refit the linear model from Exercise 2 on this reduced data set. How do the coefficients $(\hat\beta_0, \hat\beta_1)$ compare? Which is a better representation of the average character?
+8. Refit the linear model from Exercise 3 on this reduced data set. How do the coefficients $(\hat\beta_0, \hat\beta_1)$ compare? Which is a better representation of the average character?
 
 9. Using the values in Exercise 8, write out the equation for the predicted weight $(\hat{y})$. 
 
