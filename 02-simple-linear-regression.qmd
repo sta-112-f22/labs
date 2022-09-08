@@ -74,7 +74,7 @@ To find out more about the dataset, type the following in your Console: `?starwa
 
 4. Using the values in Exercise 3, write out the equation for the predicted weight $(\hat{y})$. 
 
-$$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1$$
+$$\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x$$
 
 In  your `qmd` file, you can include math using `LaTeX` equations. These math equations are denoted using the `$`. To include an equation that will be centered on a line, you can wrap it in two `$$`. For example, you can add the equation above to your `qmd` file by coping the following text:
 
