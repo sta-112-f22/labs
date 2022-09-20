@@ -8,7 +8,7 @@ format:
       - lab.scss
 ---
 
-**Due:** 2022-09-28 at noon
+**Due:** 2022-09-28 at midnight
 **Turn your .html file in on Canvas**
 
 
@@ -35,12 +35,11 @@ https://github.com/sta-112-f22/lab-03-candy-regression.git
 
 # Packages
 
-In this lab we will work with the `tidyverse`, `fivethirtyeight` and `broom` packages. We start by loading the packages.
+In this lab we will work with the `tidyverse` and `fivethirtyeight` packages. We start by loading the packages.
 
 ```{r}
 library(tidyverse)
 library(fivethirtyeight)
-library(broom)
 ```
 
 ::: column-margin
