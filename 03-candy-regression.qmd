@@ -18,6 +18,21 @@ knitr::opts_chunk$set(eval = FALSE)
 
 For this lab we are going to work with the Candy Power Ranking data. This is the data behind the FiveThirtyEight story ["The Ultimate Halloween Candy Power Ranking"](https://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/).
 
+# Getting started
+
+Go to RStudio Pro and click:
+
+**Step 1**. File \> New Project\
+**Step 2**. "Version Control"\
+**Step 3**. Git\
+**Step 4**. Copy the following into the "Repository URL":
+
+```{bash}
+#| eval: false
+https://github.com/sta-112-f22/lab-03-candy-regression.git
+```
+
+
 # Packages
 
 In this lab we will work with the `tidyverse`, `fivethirtyeight` and `broom` packages. We start by loading the packages.
