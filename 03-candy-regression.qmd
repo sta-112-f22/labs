@@ -1,0 +1,138 @@
+---
+title: "Lab 03 - Candy Regression"
+date: "2022-09-20"
+format: 
+  html:
+    theme:
+      - flatly
+      - lab.scss
+---
+
+**Due:** 2022-09-28 at noon
+**Turn your .html file in on Canvas**
+
+
+```{r include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+For this lab we are going to work with the Candy Power Ranking data. This is the data behind the FiveThirtyEight story ["The Ultimate Halloween Candy Power Ranking"](https://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/).
+
+# Packages
+
+In this lab we will work with the `tidyverse`, `fivethirtyeight` and `broom` packages. We start by loading the packages.
+
+```{r}
+library(tidyverse)
+library(fivethirtyeight)
+library(broom)
+```
+
+::: column-margin
+**Note:** Make sure you render your HTML document frequently - this will also save your .qmd file! This is good practice to make sure you are catching any bugs early (and saving your output regularly).
+:::
+
+Note that these packages are also loaded in your document.
+
+# Load the data
+
+The data we will be working with today is called `candy_rankings` and it's in the `fivethirtyeight` package.
+
+To find out more about the dataset, type the following in your Console: `?candy_rankings` A question mark before the name of an object will always bring up its help file. This command must be ran in the Console.
+
+`candy_rankings` is a tidy data frame, with each row representing an observation and each column representing a variable.
+
+To view the data, run `data(candy_rankings)` and click on the name of the data frame in the Environment tab.
+
+You can also take a quick peek at your data frame and view its dimensions with the glimpse function.
+
+`glimpse(candy_rankings)`
+
+The description of the variables, i.e. the codebook, is given below.
+
+ Header                        |  Description
+----------------|--------------------------------
+`chocolate` | Does it contain chocolate?
+`fruity` | Is it fruit flavored?
+`caramel` | Is there caramel in the candy?
+`peanutalmondy` | Does it contain peanuts, peanut butter or almonds?
+`nougat` | Does it contain nougat?
+`crispedricewafer` | Does it contain crisped rice, wafers, or a cookie component?
+`hard` | Is it a hard candy?
+`bar` | Is it a candy bar?
+`pluribus` | Is it one of many candies in a bag or box?
+`sugarpercent` | The percentile of sugar it falls under within the data set.
+`pricepercent` | The unit price percentile compared to the rest of the set.
+`winpercent` | The overall win percentage according to 269,000 matchups.
+
+# Exercises
+
+1. How many observations are in this dataset? What does each observation represent?
+
+2. How many variables are in this dataset? Describe the variable types - are they numeric / continuous / quantitative or are they categorical? If they are categorical, what are the categories? Are they a special type of categorical variable known as a _binary_ variable, a categorical variable with just two levels? 
+
+3. Create a new dataset called `single_candy_rankings` that only contains observations where `pluribus == 0`. This new dataset contains only candies that come with **one** candy (instead of many in a bag or box). The rest of this lab will use this new dataset.
+
+```{r, eval = FALSE}
+single_candy_rankings  <- candy_rankings %>%
+  filter(---)
+```
+
+4. Let's take a closer look at two variables, `sugarpercent` and `winpercent`. Summarize the center and spread of these two variables by calculating the mean and standard deviation using the code below and describe what you see. Create two histograms using the `single_candy_rankings` dataset, one of `sugarpercent` and one of `winpercent`. Be sure to select an appropriate `binwidth`.
+
+```{r, eval = FALSE}
+single_candy_rankings %>%
+  summarise(mean_sugarpct = mean(sugarpercent),
+            mean_winpct = mean(winpercent),
+            sd_sugarpct = sd(sugarpercent),
+            sd_winpct = sd(winpercent))
+```
+
+5. Using the `single_candy_rankings`, create a visualization to describe the relationship between `sugarpercent` and `winpercent` (where `winpercent` is on the y-axis). Describe the relationship that you see.
+
+6. Examine the correlation between `sugarpercent` and `winpercent` using the `cor()` function by modifying the code below. Comment on the correlation coefficient - how does it compare to what you saw in Exercise 5. 
+
+```{r, eval = FALSE}
+single_candy_rankings %>%
+  summarise(r = cor(---))
+```
+
+7. In the special case of a simple linear regression, you can calculate $\hat{\beta}_1$ without having to use any calculus! It turns out the following equation works:
+
+$$\hat{\beta}_1 = \hat{r} \frac{\hat{\sigma}_y}{\hat{\sigma}_x}$$
+
+Where $\hat{r}$ is the estimated correlation between $x$ and $y$, $\hat{\sigma}_x$ is the standard deviation of $x$, and $\hat{\sigma}_y$ is the standard deviation of $y$. Let's see if we can calculate this. Edit the code below to calculate:
+
+* `sd_x`: the standard deviation of `sugarpercent`  
+* `sd_y`: the standard deviation of `winpercent`  
+* `r`: the correlation between `sugarpercent` and `winpercent`
+* `beta1`: The slope of the simple linear regression between `winpercent` ~ `sugarpercent` (I have written the equation for `beta` for you, you do not have to edit this final part).
+
+
+```{r, eval = FALSE}
+single_candy_rankings %>%
+  summarise(sd_x = ---,
+            sd_y = ---,
+            r = ---,
+            beta1 = r * (sd_y / sd_x))
+```
+
+8. We are interested in fitting a simple linear regression of the form:
+
+$y = \beta_0 + \beta_1x + \epsilon$
+
+where $y$ is `winpercent` and $x$ is `sugarpercent`. Use the `lm()` function to fit this model. 
+
+9. What is $\hat{\beta}_0$? What is $\hat{\beta}_1$? Interpret these results in _words_. How does this $\hat{\beta}_1$ compare to the one you calculated in Exercise 7?
+
+10. Calculate the residuals for the model fit in Exercise 8. Create a scatterplot of the residuals by $\hat{y}$, the predicted outcome, `winpercent`. Do the conditions of linearity and constant variance seem to hold?
+
+11. Plot the residuals using a histogram with `binwidth = 9` to observe whether they follow a bell-shaped distribution. Comment on what you see.
+
+12. Calculate a confidence interval for $\hat\beta_1$. Report this value and interpret it in the context of this model.
+
+13. We are interested in testing whether there is a relationship between `winpercent` and `sugarpercent`. The null hypothesis is that $\beta_1=0$ What is the alternative hypothesis? How can you conduct this hypothesis test?
+
+14. Report the p-value for the hypothesis test for Exercise 13. What does this mean?
+
+

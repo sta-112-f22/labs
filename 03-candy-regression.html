@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2022-09-20">
+
+<title>Lab 03 - Candy Regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="03-candy-regression_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03-candy-regression_files/libs/quarto-html/quarto.js"></script>
+<script src="03-candy-regression_files/libs/quarto-html/popper.min.js"></script>
+<script src="03-candy-regression_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03-candy-regression_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03-candy-regression_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03-candy-regression_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03-candy-regression_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03-candy-regression_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03-candy-regression_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 03 - Candy Regression</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 20, 2022</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Due:</strong> 2022-09-28 at noon <strong>Turn your .html file in on Canvas</strong></p>
+<p>For this lab we are going to work with the Candy Power Ranking data. This is the data behind the FiveThirtyEight story <a href="https://fivethirtyeight.com/features/the-ultimate-halloween-candy-power-ranking/">“The Ultimate Halloween Candy Power Ranking”</a>.</p>
+<section id="packages" class="level1 page-columns page-full">
+<h1>Packages</h1>
+<p>In this lab we will work with the <code>tidyverse</code>, <code>fivethirtyeight</code> and <code>broom</code> packages. We start by loading the packages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Note:</strong> Make sure you render your HTML document frequently - this will also save your .qmd file! This is good practice to make sure you are catching any bugs early (and saving your output regularly).</p>
+</div></div><p>Note that these packages are also loaded in your document.</p>
+</section>
+<section id="load-the-data" class="level1">
+<h1>Load the data</h1>
+<p>The data we will be working with today is called <code>candy_rankings</code> and it’s in the <code>fivethirtyeight</code> package.</p>
+<p>To find out more about the dataset, type the following in your Console: <code>?candy_rankings</code> A question mark before the name of an object will always bring up its help file. This command must be ran in the Console.</p>
+<p><code>candy_rankings</code> is a tidy data frame, with each row representing an observation and each column representing a variable.</p>
+<p>To view the data, run <code>data(candy_rankings)</code> and click on the name of the data frame in the Environment tab.</p>
+<p>You can also take a quick peek at your data frame and view its dimensions with the glimpse function.</p>
+<p><code>glimpse(candy_rankings)</code></p>
+<p>The description of the variables, i.e.&nbsp;the codebook, is given below.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 66%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Header</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>chocolate</code></td>
+<td>Does it contain chocolate?</td>
+</tr>
+<tr class="even">
+<td><code>fruity</code></td>
+<td>Is it fruit flavored?</td>
+</tr>
+<tr class="odd">
+<td><code>caramel</code></td>
+<td>Is there caramel in the candy?</td>
+</tr>
+<tr class="even">
+<td><code>peanutalmondy</code></td>
+<td>Does it contain peanuts, peanut butter or almonds?</td>
+</tr>
+<tr class="odd">
+<td><code>nougat</code></td>
+<td>Does it contain nougat?</td>
+</tr>
+<tr class="even">
+<td><code>crispedricewafer</code></td>
+<td>Does it contain crisped rice, wafers, or a cookie component?</td>
+</tr>
+<tr class="odd">
+<td><code>hard</code></td>
+<td>Is it a hard candy?</td>
+</tr>
+<tr class="even">
+<td><code>bar</code></td>
+<td>Is it a candy bar?</td>
+</tr>
+<tr class="odd">
+<td><code>pluribus</code></td>
+<td>Is it one of many candies in a bag or box?</td>
+</tr>
+<tr class="even">
+<td><code>sugarpercent</code></td>
+<td>The percentile of sugar it falls under within the data set.</td>
+</tr>
+<tr class="odd">
+<td><code>pricepercent</code></td>
+<td>The unit price percentile compared to the rest of the set.</td>
+</tr>
+<tr class="even">
+<td><code>winpercent</code></td>
+<td>The overall win percentage according to 269,000 matchups.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<ol type="1">
+<li><p>How many observations are in this dataset? What does each observation represent?</p></li>
+<li><p>How many variables are in this dataset? Describe the variable types - are they numeric / continuous / quantitative or are they categorical? If they are categorical, what are the categories? Are they a special type of categorical variable known as a <em>binary</em> variable, a categorical variable with just two levels?</p></li>
+<li><p>Create a new dataset called <code>single_candy_rankings</code> that only contains observations where <code>pluribus == 0</code>. This new dataset contains only candies that come with <strong>one</strong> candy (instead of many in a bag or box). The rest of this lab will use this new dataset.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>single_candy_rankings  <span class="ot">&lt;-</span> candy_rankings <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">---</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Let’s take a closer look at two variables, <code>sugarpercent</code> and <code>winpercent</code>. Summarize the center and spread of these two variables by calculating the mean and standard deviation using the code below and describe what you see. Create two histograms using the <code>single_candy_rankings</code> dataset, one of <code>sugarpercent</code> and one of <code>winpercent</code>. Be sure to select an appropriate <code>binwidth</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>single_candy_rankings <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_sugarpct =</span> <span class="fu">mean</span>(sugarpercent),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_winpct =</span> <span class="fu">mean</span>(winpercent),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_sugarpct =</span> <span class="fu">sd</span>(sugarpercent),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_winpct =</span> <span class="fu">sd</span>(winpercent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li><p>Using the <code>single_candy_rankings</code>, create a visualization to describe the relationship between <code>sugarpercent</code> and <code>winpercent</code> (where <code>winpercent</code> is on the y-axis). Describe the relationship that you see.</p></li>
+<li><p>Examine the correlation between <code>sugarpercent</code> and <code>winpercent</code> using the <code>cor()</code> function by modifying the code below. Comment on the correlation coefficient - how does it compare to what you saw in Exercise 5.</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>single_candy_rankings <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">r =</span> <span class="fu">cor</span>(<span class="sc">---</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="7" type="1">
+<li>In the special case of a simple linear regression, you can calculate <span class="math inline">\(\hat{\beta}_1\)</span> without having to use any calculus! It turns out the following equation works:</li>
+</ol>
+<p><span class="math display">\[\hat{\beta}_1 = \hat{r} \frac{\hat{\sigma}_y}{\hat{\sigma}_x}\]</span></p>
+<p>Where <span class="math inline">\(\hat{r}\)</span> is the estimated correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, <span class="math inline">\(\hat{\sigma}_x\)</span> is the standard deviation of <span class="math inline">\(x\)</span>, and <span class="math inline">\(\hat{\sigma}_y\)</span> is the standard deviation of <span class="math inline">\(y\)</span>. Let’s see if we can calculate this. Edit the code below to calculate:</p>
+<ul>
+<li><code>sd_x</code>: the standard deviation of <code>sugarpercent</code><br>
+</li>
+<li><code>sd_y</code>: the standard deviation of <code>winpercent</code><br>
+</li>
+<li><code>r</code>: the correlation between <code>sugarpercent</code> and <code>winpercent</code></li>
+<li><code>beta1</code>: The slope of the simple linear regression between <code>winpercent</code> ~ <code>sugarpercent</code> (I have written the equation for <code>beta</code> for you, you do not have to edit this final part).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>single_candy_rankings <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">sd_x =</span> <span class="sc">---</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd_y =</span> <span class="sc">---</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">r =</span> <span class="sc">---</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">beta1 =</span> r <span class="sc">*</span> (sd_y <span class="sc">/</span> sd_x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="8" type="1">
+<li>We are interested in fitting a simple linear regression of the form:</li>
+</ol>
+<p><span class="math inline">\(y = \beta_0 + \beta_1x + \epsilon\)</span></p>
+<p>where <span class="math inline">\(y\)</span> is <code>winpercent</code> and <span class="math inline">\(x\)</span> is <code>sugarpercent</code>. Use the <code>lm()</code> function to fit this model.</p>
+<ol start="9" type="1">
+<li><p>What is <span class="math inline">\(\hat{\beta}_0\)</span>? What is <span class="math inline">\(\hat{\beta}_1\)</span>? Interpret these results in <em>words</em>. How does this <span class="math inline">\(\hat{\beta}_1\)</span> compare to the one you calculated in Exercise 7?</p></li>
+<li><p>Calculate the residuals for the model fit in Exercise 8. Create a scatterplot of the residuals by <span class="math inline">\(\hat{y}\)</span>, the predicted outcome, <code>winpercent</code>. Do the conditions of linearity and constant variance seem to hold?</p></li>
+<li><p>Plot the residuals using a histogram with <code>binwidth = 9</code> to observe whether they follow a bell-shaped distribution. Comment on what you see.</p></li>
+<li><p>Calculate a confidence interval for <span class="math inline">\(\hat\beta_1\)</span>. Report this value and interpret it in the context of this model.</p></li>
+<li><p>We are interested in testing whether there is a relationship between <code>winpercent</code> and <code>sugarpercent</code>. The null hypothesis is that <span class="math inline">\(\beta_1=0\)</span> What is the alternative hypothesis? How can you conduct this hypothesis test?</p></li>
+<li><p>Report the p-value for the hypothesis test for Exercise 13. What does this mean?</p></li>
+</ol>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
