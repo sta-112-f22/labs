@@ -2543,16 +2543,18 @@ vertical-align: -.125em;
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;MathEnrollment&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li><p>Fit a simple linear regression predicting <code>Spring</code> enrollment from <code>Fall</code> in the <code>MathEnrollment</code> data set. Report the intercept and slope of this model. Interpret these results.</p></li>
+<li><p>Fit a simple linear regression predicting <code>Spring</code> enrollment from <code>Fall</code> in the <code>MathEnrollment</code> data set. We are interested in interpreting the coefficients for the slope and intercept, drawing inference (that is examining the confidence intervals) and making predictions for new observations using this model. What are the assumptions needed in order to do this?</p></li>
+<li><p>Check that the assumptions listed in Exercise 1 are met by this model.</p></li>
+<li><p>Report the intercept and slope of the model fit in Exercise 1. Interpret these results.</p></li>
 <li><p>Find the <strong>F-statistic</strong> and it’s associated <strong>p-value</strong> as well as the <strong>coefficient of determination</strong> for the model fit in Exercise 1. Interpret these results.</p></li>
 <li><p>There is some discussion in the department that the data point for 2003 is an “influential” point. Create a new dataset filtering out when <code>AYear</code> is 2003. Refit a simple linear regression model predicting <code>Spring</code> enrollment from <code>Fall</code> in this filtered dataset. Do you think 2003 is influential?</p></li>
-<li><p>Summarize the model statistics from Exercise 3. What percent of the variability in spring enrollment is explained by using a simple linear model with fall enrollment as the predictor?</p></li>
+<li><p>For the model fit in Exercise 5, what percent of the variability in spring enrollment is explained by using a simple linear model with fall enrollment as the predictor? How does this compare to the model fit in Exercise 1?</p></li>
 <li><p>Provide the ANOVA table for partitioning the total variability in spring enrollment based on this model using the <code>anova()</code> function. Using the components of this table, calculate the Total Sum of Squares.</p></li>
-<li><p>Provide a 95% confidence interval for the slope of the model fit in Exercise 3. Does this interval include 0? Interpret this result.</p></li>
-<li><p>Using the model fit in Exercise 3, what would you predict the spring enrollment to be when the fall enrollment is 290?</p></li>
+<li><p>Provide a 95% confidence interval for the slope of the model fit in Exercise 5. Does this interval include 0? Interpret this result.</p></li>
+<li><p>Using the model fit in Exercise 5, what would you predict the spring enrollment to be when the fall enrollment is 290?</p></li>
 <li><p>Provide a 95% confidence interval for average spring enrollment when the fall enrollment is 290.</p></li>
 <li><p>Provide a 95% <strong>prediction interval</strong> for spring enrollment when the fall enrollment is 290.</p></li>
-<li><p>A new administrator at the college wants to know what interval she should use to predict the enrollment next spring when the enrollment next fall is 290. Would you recommend that she use your interval from Exercise 8 or the interval from Exercise 9? Explain.</p></li>
+<li><p>A new administrator at the college wants to know what interval she should use to predict the enrollment next spring when the enrollment next fall is 290. Would you recommend that she use your interval from Exercise 10 or the interval from Exercise 11? Explain.</p></li>
 </ol>
 </section>
 
