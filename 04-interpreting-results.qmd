@@ -13,6 +13,22 @@ format:
 **Due:** 2022-10-12 at 11:59p
 **Turn in the .html file on Canvas**
 
+# Getting started
+
+Go to RStudio Pro and click:
+
+**Step 1**. File \> New Project\
+**Step 2**. "Version Control"\
+**Step 3**. Git\
+**Step 4**. Copy the following into the "Repository URL":
+
+```{bash}
+#| eval: false
+https://github.com/sta-112-f22/lab-04-interpreting-results.git
+```
+
+# Exercises
+
 Total enrollments in mathematics courses at a small liberal arts college were obtained for each semester from Fall 2001 to Spring 2012. The academic year at this school consists of two semesters, with enrollment counts for `Fall` and `Spring` each year. The variable `AYear` indicates the year at the beginning of the academic year. The data is in the **Stat2Data** package. The dataset is called `MathEnrollment`. 
 
 Be sure to load the proper packages and the dataset before you begin. 

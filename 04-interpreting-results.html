@@ -2522,12 +2522,25 @@ vertical-align: -.125em;
 </header>
 
 <p><strong>Due:</strong> 2022-10-12 at 11:59p <strong>Turn in the .html file on Canvas</strong></p>
+<section id="getting-started" class="level1">
+<h1>Getting started</h1>
+<p>Go to RStudio Pro and click:</p>
+<p><strong>Step 1</strong>. File &gt; New Project<br>
+<strong>Step 2</strong>. “Version Control”<br>
+<strong>Step 3</strong>. Git<br>
+<strong>Step 4</strong>. Copy the following into the “Repository URL”:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">https://github.com/sta-112-f22/lab-04-interpreting-results.git</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
 <p>Total enrollments in mathematics courses at a small liberal arts college were obtained for each semester from Fall 2001 to Spring 2012. The academic year at this school consists of two semesters, with enrollment counts for <code>Fall</code> and <code>Spring</code> each year. The variable <code>AYear</code> indicates the year at the beginning of the academic year. The data is in the <strong>Stat2Data</strong> package. The dataset is called <code>MathEnrollment</code>.</p>
 <p>Be sure to load the proper packages and the dataset before you begin.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Stat2Data)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;MathEnrollment&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Stat2Data)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;MathEnrollment&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
 <li><p>Fit a simple linear regression predicting <code>Spring</code> enrollment from <code>Fall</code> in the <code>MathEnrollment</code> data set. Report the intercept and slope of this model. Interpret these results.</p></li>
@@ -2541,6 +2554,7 @@ vertical-align: -.125em;
 <li><p>Provide a 95% <strong>prediction interval</strong> for spring enrollment when the fall enrollment is 290.</p></li>
 <li><p>A new administrator at the college wants to know what interval she should use to predict the enrollment next spring when the enrollment next fall is 290. Would you recommend that she use your interval from Exercise 8 or the interval from Exercise 9? Explain.</p></li>
 </ol>
+</section>
 
 </main>
 <!-- /main column -->
