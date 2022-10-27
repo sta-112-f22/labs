@@ -36,10 +36,21 @@ library(Stat2Data)
 
 The `Diamonds` data set can be used to examine the predict a diamond's price using characteristics about the diamond. For this lab, you need to try to find the **best model** to predict the total price of a diamond. Here "best" is defined as a model that (1) meets the assumptions of multiple regression and (2) has a good model fit, as determined by the metrics we've learned so far. I want you to **show your work**. Your report should include:
 
-1. A list of all models you attempted
-2. Figures displaying the checks for the assumptions for multiple linear regression for the **final model you pick**
-3. The equation for the **final model you pick**
-4. The model metric for the final model you picked (and how it compared to the other models)
+(1) A list of all models you attempted
+(2) Figures displaying the checks for the assumptions for multiple linear regression for the **final model you pick**
+(3) The equation for the **final model you pick**
+(4) The model goodness of fit metric for the **final model you picked** (and how it compared to the other models)
+(5) Finally, I want you to use this new data set below to predict what a **particular** diamond with these specifications would cost, along with an appropriate confidence interval. (Note: it is not a problem if you do not include all of these variables in your model)
+
+```{r}
+new_data <- data.frame(
+  Carat = 2,
+  Color = "J",
+  Clarity = "SI2",
+  Depth = 69
+)
+```
 
 
-1. T
+
+Some things to consider: you may want to try transformations of the outcome, include polynomial terms to account for non-linearity, and/or include interaction terms. Also, be sure to carefully understand what each of the available variables mean. It would not make sense to use a function of the outcome in the model, for example.
