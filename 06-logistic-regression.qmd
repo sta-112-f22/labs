@@ -1,0 +1,62 @@
+---
+title: "Lab 06 - Logistic"
+date: "2022-11-08"
+format: 
+  html:
+    self-contained: true
+    theme:
+      - flatly
+      - lab.scss
+---
+
+**Due:** 2022-11-16 at 11:59pm
+**Turn your .html file in on Canvas**
+
+# Getting started
+
+Go to RStudio Pro and click:
+
+**Step 1**. File \> New Project\
+**Step 2**. "Version Control"\
+**Step 3**. Git\
+**Step 4**. Copy the following into the "Repository URL":
+
+```{bash}
+#| eval: false
+https://github.com/sta-112-f22/lab-06-logistic-regression.git
+```
+
+# Set up
+
+We will use two packages, `tidyverse` and `Stat2Data`. Additionally, if you need to create an empirical logit plot, below is example code to do so:
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(Stat2Data)
+data(MedGPA)
+# you can change ngroups as you see necessary, this is kind of like setting the number of bins in a histogram
+emplogitplot1(Acceptance ~ GPA, data = MedGPA, ngroups = 5)
+```
+
+# Exercises
+
+We are analyzing the `Leukemia` data from the `Stat2Data` package. Be sure to learn about the data and variables. We are doing **inference** on a model predicting whether the patient responded to treatment from Age. 
+
+1. Describe the data (number of observations, what the observations are, number of variables, what the variables are, and whether there is any missing data).
+
+2. Run the following code to drop `Time` (the survival time) and `Status` (an indicator for whether the patient survived), from your dataset.
+
+```{r}
+#| eval: false
+Leukemia <- Leukemia %>%
+  select(-Time, -Status)
+```
+
+3. We are interested in whether the number of age at diagnosis influences the probability of responding to treatment. Consider the available variables in your dataset and propose a model to assess the relationship between age at diagnosis and the probability (or odds) of responding to treatment. What variables are you including in your model? Why?
+
+4. Fit the model proposed in Exercise 3. Check that this model fits the assumption(s) for logistic regression. Are the assumptions met? Be sure to include a figure to demonstrate the fit of the assumptions for the `Age` variable.
+
+5. Report the coefficient for Age as well as the associated odds ratio with a 95% confidence interval. Interpret this in the context of this data.
+
