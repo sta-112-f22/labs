@@ -54,7 +54,7 @@ Leukemia <- Leukemia %>%
   select(-Time, -Status)
 ```
 
-3. We are interested in whether age at diagnosis influences the probability of responding to treatment. Consider the available variables in your dataset and propose a model to assess the relationship between age at diagnosis and the probability (or odds) of responding to treatment. What variables are you including in your model? Why?
+3. We are interested in whether age at diagnosis influences the probability of responding to treatment. I propose that the differential percentage of blasts, the percentage of absolute marrow leukemia infiltrate and the highest temperature of the patient prior to treatment in degrees Fahrenheit are important to control for when assessing the relationship between age at diagnosis and the probability of responding to treatment. Write out the equation for a model we would fit to assess this relationship.
 
 4. Fit the model proposed in Exercise 3. Check that this model fits the assumption(s) for logistic regression. Are the assumptions met? Be sure to include a figure to demonstrate the fit of the assumptions for the `Age` variable.
 
